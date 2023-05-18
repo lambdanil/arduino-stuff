@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "author": "Jan Novotný",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -486.59,
+      "left": 50.75,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": -344.93,
+      "left": 68.93,
+      "attrs": {
+        "keys": [ "1", "2", "3", "↑", "4", "5", "6", "↓", "7", "8", "9", "Cl", "*", "0", "#", "En" ]
+      }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": -69.29, "left": 410.39, "attrs": {} }
+  ],
+  "connections": [
+    [ "keypad1:C4", "uno:2", "green", [ "v0" ] ],
+    [ "keypad1:C2", "uno:4", "green", [ "v0" ] ],
+    [ "keypad1:C3", "uno:3", "green", [ "v0" ] ],
+    [ "keypad1:C1", "uno:5", "green", [ "v0" ] ],
+    [ "keypad1:R4", "uno:6", "green", [ "v0" ] ],
+    [ "keypad1:R3", "uno:7", "green", [ "v0" ] ],
+    [ "uno:8", "keypad1:R2", "green", [ "v-6.37", "h5.25" ] ],
+    [ "uno:9", "keypad1:R1", "green", [ "v-7.34", "h6.01" ] ],
+    [ "lcd1:SDA", "uno:A4", "green", [ "h-19.77", "v475.16", "h-105.15" ] ],
+    [ "lcd1:VCC", "uno:3.3V", "red", [ "h-27.56", "v493.23", "h-181.48" ] ],
+    [ "lcd1:SCL", "uno:A5", "green", [ "h-11.21", "v450.86" ] ],
+    [ "uno:GND.1", "relay1:GND", "black", [ "v0" ] ],
+    [ "uno:5V", "relay1:VCC", "red", [ "v0" ] ],
+    [ "relay1:IN", "uno:13", "green", [ "h-153.34", "v50.46", "h-135.38" ] ],
+    [ "lcd1:GND", "uno:GND.1", "black", [ "h-37.19", "v439.01", "h87.17" ] ]
+  ],
+  "dependencies": {}
+}
